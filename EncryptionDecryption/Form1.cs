@@ -26,12 +26,6 @@ namespace EncryptionDecryption
             aesCryptoService.Padding = PaddingMode.PKCS7;
         }
 
-        private void btnEncryptionDecryption_Click(object sender, EventArgs e)
-        {
-            richEncryption.Text = Encryption(txtData.Text);
-            txtDecryption.Text = Decryption(richEncryption.Text);
-        }
-
         public string Encryption(string text)
         {
             ICryptoTransform encryptor = aesCryptoService.CreateEncryptor();
@@ -47,6 +41,16 @@ namespace EncryptionDecryption
             byte[] decrypted_bytes = decryptor.TransformFinalBlock(enc_bytes, 0, enc_bytes.Length);
             string decryptedData = ASCIIEncoding.ASCII.GetString(decrypted_bytes);
             return decryptedData;
+        }
+
+        private void btnEncryption_Click(object sender, EventArgs e)
+        {
+            richEncryption.Text = Encryption(txtData.Text);
+        }
+
+        private void btnDecryption_Click(object sender, EventArgs e)
+        {
+            txtDecryption.Text = Decryption(richEncryption.Text);
         }
     }
 }
