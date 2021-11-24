@@ -14,14 +14,14 @@ namespace EncryptionDecryption
 
             aesCryptoService = new AesCryptoServiceProvider();
             aesCryptoService.BlockSize = 128;
-            aesCryptoService.KeySize = 256;
+            aesCryptoService.KeySize = 128;
 
-            //aesCryptoService.IV = Encoding.UTF8.GetBytes("amsZlfovb2M35vgh");
-            //aesCryptoService.Key = Encoding.UTF8.GetBytes("nbmsjhcxdaq10f5s");
+            aesCryptoService.Key = Encoding.ASCII.GetBytes("aaaaaaaaaaaaaaaa");
+            aesCryptoService.IV = Encoding.ASCII.GetBytes("bbbbbbbbbbbbbbbb");
 
             //Rastgele Key ve Vector oluşturuyor.
-            aesCryptoService.GenerateKey();
-            aesCryptoService.GenerateIV();
+            //aesCryptoService.GenerateKey();
+            //aesCryptoService.GenerateIV();
             aesCryptoService.Mode = CipherMode.CBC;
             aesCryptoService.Padding = PaddingMode.PKCS7;
         }
